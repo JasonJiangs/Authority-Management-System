@@ -7,14 +7,13 @@ import com.oa.auth.service.SysRoleService;
 import com.oa.common.result.ResultCode;
 import com.oa.model.system.SysRole;
 import com.oa.vo.system.SysRoleQueryVo;
+import com.service.config.exception.TypeException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,6 +41,11 @@ public class SysRoleController {
     @GetMapping("findAll")
     public ResultCode findAll() {
         List<SysRole> roleList = sysRoleService.list();
+        try {
+            int a = 10/0;
+        } catch (Exception e) {
+            throw new TypeException(222, "Calculation failed.");
+        }
         return ResultCode.succeed(roleList);
     }
 
@@ -62,6 +66,58 @@ public class SysRoleController {
 
         IPage<SysRole> pageModel = sysRoleService.page(pageParam, wrapper);
         return ResultCode.succeed(pageModel);
+    }
+
+
+    @ApiOperation(value = "add role")
+    @PostMapping("save")
+    public ResultCode save(@RequestBody @Validated SysRole role) {
+        boolean is_success = sysRoleService.save(role);
+        if (is_success) {
+            return ResultCode.succeed();
+        } else {
+            return ResultCode.fail();
+        }
+    }
+
+    @ApiOperation(value = "query by id")
+    @GetMapping("get/{id}")
+    public ResultCode get(@PathVariable Long id) {
+        SysRole role = sysRoleService.getById(id);
+        return ResultCode.succeed(role);
+    }
+
+    @ApiOperation(value = "update information")
+    @PutMapping("update")
+    public ResultCode updateById(@RequestBody SysRole role) {
+        boolean is_success = sysRoleService.updateById(role);
+        if (is_success) {
+            return ResultCode.succeed();
+        } else {
+            return ResultCode.fail();
+        }
+    }
+
+    @ApiOperation(value = "delete role")
+    @DeleteMapping("remove/{id}")
+    public ResultCode remove(@PathVariable Long id) {
+        boolean is_success = sysRoleService.removeById(id);
+        if (is_success) {
+            return ResultCode.succeed();
+        } else {
+            return ResultCode.fail();
+        }
+    }
+
+    @ApiOperation(value = "delete multiple roles")
+    @DeleteMapping("batchRemove")
+    public ResultCode batchRemove(@RequestBody List<Long> idList) {
+        boolean is_success = sysRoleService.removeByIds(idList);
+        if (is_success) {
+            return ResultCode.succeed();
+        } else {
+            return ResultCode.fail();
+        }
     }
 
 

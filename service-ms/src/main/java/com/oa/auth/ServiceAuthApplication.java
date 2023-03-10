@@ -10,11 +10,13 @@ import org.springframework.context.annotation.ComponentScan;
  * @Date: 2023/3/4 21:29 21 29
  */
 
-@MapperScan(value = "com.oa.auth.mapper")
-//@ComponentScan("com.service.config.mbp")
+@ComponentScan("com.service.config.mbp")
+@ComponentScan("com.service.config.exception")
 @SpringBootApplication
+@MapperScan(basePackages = {"com.oa.auth.mapper"})
 public class ServiceAuthApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServiceAuthApplication.class, args);
     }
 }
+
