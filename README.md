@@ -44,11 +44,12 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 This software uses the following open source packages:
 
 - [SpringBoot]()
+- [MyBatis-Plus]()  
 - [Redis]()
 - [MySQL]()
 - [SpringSecurity]()
 - [Activiti]()
-- [vue-admin-template]()
+- [vue-admin-template](https://panjiachen.github.io/vue-element-admin-site/)
 - [Node.js]()
 - [Npm]()
 - [Vue]()
