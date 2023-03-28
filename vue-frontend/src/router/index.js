@@ -55,6 +55,28 @@ export const constantRoutes = [
     }]
   },
 
+
+  {
+    path: '/system',
+    component: Layout,
+    meta: {
+      title: 'system manager',
+      icon: 'el-icon-s-tools'
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'sysRole',
+        component: () => import('@/views/system/sysRole/list'),
+        meta: {
+          title: 'role manager',
+          icon: 'el-icon-s-help'
+        },
+      }
+    ]
+  },
+
+
   {
     path: '/example',
     component: Layout,
