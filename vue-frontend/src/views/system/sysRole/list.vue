@@ -16,7 +16,7 @@
           <!-- 工具条 -->
           <el-button type="success" icon="el-icon-plus" size="mini" @click="add">Add</el-button>
           <el-button  type="success"  size="mini" @click="batchRemove()" >Batch Delete</el-button>
-          <el-button icon="el-icon-refresh" size="mini" @click="resetData">重置</el-button>
+          <el-button icon="el-icon-refresh" size="mini" @click="resetData">Reset</el-button>
         </el-row>
       </el-form>
     </div>

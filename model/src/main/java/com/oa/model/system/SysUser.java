@@ -17,43 +17,43 @@ public class SysUser extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(value = "用户名")
+	@ApiModelProperty(value = "username")
 	@TableField("username")
 	private String username;
 
-	@ApiModelProperty(value = "密码")
+	@ApiModelProperty(value = "password")
 	@TableField("password")
 	private String password;
 
-	@ApiModelProperty(value = "姓名")
+	@ApiModelProperty(value = "name")
 	@TableField("name")
 	private String name;
 
-	@ApiModelProperty(value = "手机")
+	@ApiModelProperty(value = "phone number")
 	@TableField("phone")
 	private String phone;
 
-	@ApiModelProperty(value = "头像地址")
+	@ApiModelProperty(value = "url of head image")
 	@TableField("head_url")
 	private String headUrl;
 
-	@ApiModelProperty(value = "部门id")
+	@ApiModelProperty(value = "dept id")
 	@TableField("dept_id")
 	private Long deptId;
 
-	@ApiModelProperty(value = "岗位id")
+	@ApiModelProperty(value = "post id")
 	@TableField("post_id")
 	private Long postId;
 
-	@ApiModelProperty(value = "描述")
+	@ApiModelProperty(value = "description")
 	@TableField("description")
 	private String description;
 
-	@ApiModelProperty(value = "openId")
+	@ApiModelProperty(value = "open id")
 	@TableField("open_id")
 	private String openId;
 
-	@ApiModelProperty(value = "状态（1：正常 0：停用）")
+	@ApiModelProperty(value = "status 0:enable 1:disable")
 	@TableField("status")
 	private Integer status;
 
