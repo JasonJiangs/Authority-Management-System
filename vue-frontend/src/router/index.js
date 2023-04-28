@@ -72,7 +72,16 @@ export const constantRoutes = [
           title: 'role manager',
           icon: 'el-icon-s-help'
         },
-      }
+      },
+      {
+        name: 'sysUser',
+        path: 'sysUser',
+        component: () => import('@/views/system/sysUser/list'),
+        meta: {
+          title: 'user manager',
+          icon: 'el-icon-s-custom'
+        },
+      },
     ]
   },
 

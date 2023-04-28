@@ -1,7 +1,7 @@
 package com.oa.auth.service;
 
-import com.oa.auth.entity.SysUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.oa.model.system.SysUser;
 
 /**
  * <p>

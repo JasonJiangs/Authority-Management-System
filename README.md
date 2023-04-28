@@ -55,9 +55,14 @@ This website uses the following open source packages:
 - [Axios]()  
 
 
+## Development Notes
+### knifes4j
+Open with``http://localhost:8800/doc.html#/home`` to see the API documentation. The API test can be done here as well. 
+
 ## Potential Errors
 #### npm install error: 
 degrade node.js version to 12
 #### npm run dev error:  
 upgrade 'svg-sprite-loader' version in package.json
+
 

@@ -1,7 +1,7 @@
 package com.oa.auth.mapper;
 
-import com.oa.auth.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.oa.model.system.SysUser;
 
 /**
  * <p>

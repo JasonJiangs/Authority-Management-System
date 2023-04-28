@@ -58,8 +58,8 @@ public class Knife4jConfig {
     private ApiInfo adminApiInfo(){
 
         return new ApiInfoBuilder()
-                .title("后台管理系统-API文档")
-                .description("本文档描述了后台管理系统微服务接口定义")
+                .title("API document for background management system")
+                .description("The API document for the background management system")
                 .version("1.0")
                 .contact(new Contact("jasonjiangs", "jasonjiangs.github.io", "@gmail.com"))
                 .build();
