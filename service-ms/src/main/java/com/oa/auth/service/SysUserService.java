@@ -13,4 +13,5 @@ import com.oa.model.system.SysUser;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    void updateSatus(Long id, Integer status);
 }

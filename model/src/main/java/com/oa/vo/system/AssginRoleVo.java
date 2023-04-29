@@ -7,14 +7,14 @@ import lombok.Data;
 
 import java.util.List;
 
-@ApiModel(description = "分配菜单")
+@ApiModel(description = "assign role to user")
 @Data
 public class AssginRoleVo {
 
-    @ApiModelProperty(value = "用户id")
+    @ApiModelProperty(value = "user id")
     private Long userId;
 
-    @ApiModelProperty(value = "角色id列表")
+    @ApiModelProperty(value = "role id list")
     private List<Long> roleIdList;
 
 }

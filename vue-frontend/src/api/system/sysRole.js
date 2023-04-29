@@ -57,5 +57,19 @@ export default {
     })
   },
 
+  getRoles(userId) {
+    return request({
+      url: `${api_name}/toAssign/${userId}`,
+      method: 'get'
+    })
+  },
+
+  assignRoles(assginRoleVo) {
+    return request({
+      url: `${api_name}/doAssign`,
+      method: 'post',
+      data: assginRoleVo
+    })
+  }
 
 }

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.oa.auth.service.SysRoleService;
 import com.oa.common.result.ResultCode;
 import com.oa.model.system.SysRole;
+import com.oa.vo.system.AssginRoleVo;
 import com.oa.vo.system.SysRoleQueryVo;
 import com.service.config.exception.TypeException;
 import io.swagger.annotations.Api;
@@ -16,6 +17,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: Jason
@@ -119,6 +121,25 @@ public class SysRoleController {
             return ResultCode.fail();
         }
     }
+
+    // query all user's role and assigned role
+    @ApiOperation(value = "query all user's role and assigned role")
+    @GetMapping("toAssign/{userId}")
+    public ResultCode selectAssignRole(@PathVariable Long userId) {
+        Map<String, Object> map = sysRoleService.findRoleDataByUserId(userId);
+        return ResultCode.succeed(map);
+    }
+
+    // assign role to user
+    @ApiOperation(value = "assign role to user")
+    @PostMapping("doAssign")
+    public ResultCode doAssign(@RequestBody AssginRoleVo assginRoleVo) {
+        sysRoleService.assignUserRoleRelationShip(assginRoleVo);
+        return ResultCode.succeed();
+    }
+
+
+
 
 
 }

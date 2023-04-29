@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
+// MyBatis Plus Code Generator
 public class MBPCodeGenerator {
 
     public static void main(String[] args) {
@@ -48,7 +49,8 @@ public class MBPCodeGenerator {
         // 5、strategy configuration
         StrategyConfig strategy = new StrategyConfig();
 
-        strategy.setInclude("sys_user");
+//        strategy.setInclude("sys_user");
+        strategy.setInclude("sys_user_role");
 
         strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
 

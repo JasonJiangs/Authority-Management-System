@@ -90,5 +90,14 @@ public class SysUserController {
         return ResultCode.succeed();
     }
 
+    // update user status
+    @ApiOperation(value = "update user status")
+    @GetMapping("updateStatus/{id}/{status}")
+    public ResultCode updateUserById(@PathVariable Long id,
+                                      @PathVariable Integer status) {
+        sysUserService.updateSatus(id, status);
+        return ResultCode.succeed();
+    }
+
 }
 
