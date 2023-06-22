@@ -95,7 +95,7 @@ public class SysUserController {
     @GetMapping("updateStatus/{id}/{status}")
     public ResultCode updateUserById(@PathVariable Long id,
                                       @PathVariable Integer status) {
-        sysUserService.updateSatus(id, status);
+        sysUserService.updateStatus(id, status);
         return ResultCode.succeed();
     }
 

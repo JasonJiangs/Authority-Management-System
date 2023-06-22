@@ -5,18 +5,18 @@
       <el-form label-width="70px" size="small">
         <el-row>
           <el-col :span="8">
-            <el-form-item label="关 键 字">
-              <el-input style="width: 95%" v-model="searchObj.keyword" placeholder="用户名/姓名/手机号码"></el-input>
+            <el-form-item label="Keyword">
+              <el-input style="width: 95%" v-model="searchObj.keyword" placeholder="Username/Name/Phone Number"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="操作时间">
+            <el-form-item label="Date">
               <el-date-picker
                 v-model="createTimes"
                 type="datetimerange"
-                range-separator="至"
-                start-placeholder="开始时间"
-                end-placeholder="结束时间"
+                range-separator="to"
+                start-placeholder="Start Date"
+                end-placeholder="End Date"
                 value-format="yyyy-MM-dd HH:mm:ss"
                 style="margin-right: 10px;width: 100%;"
               />
@@ -24,9 +24,9 @@
           </el-col>
         </el-row>
         <el-row style="display:flex">
-          <el-button type="primary" icon="el-icon-search" size="mini" :loading="loading" @click="fetchData()">搜索</el-button>
-          <el-button icon="el-icon-refresh" size="mini" @click="resetData">重置</el-button>
-          <el-button type="success" icon="el-icon-plus" size="mini" @click="add">添 加</el-button>
+          <el-button type="primary" icon="el-icon-search" size="mini" :loading="loading" @click="fetchData()">Search</el-button>
+          <el-button icon="el-icon-refresh" size="mini" @click="resetData">Reset</el-button>
+          <el-button type="success" icon="el-icon-plus" size="mini" @click="add">Add</el-button>
         </el-row>
       </el-form>
     </div>
@@ -40,7 +40,7 @@
       style="width: 100%;margin-top: 10px;">
 
       <el-table-column
-        label="序号"
+        label="Order"
         width="70"
         align="center">
         <template slot-scope="scope">
@@ -48,17 +48,17 @@
         </template>
       </el-table-column>
 
-      <el-table-column prop="username" label="用户名" width="100"/>
-      <el-table-column prop="name" label="姓名" width="70"/>
-      <el-table-column prop="phone" label="手机" width="120"/>
-      <el-table-column prop="postName" label="岗位" width="100"/>
-      <el-table-column prop="deptName" label="部门" width="100"/>
-      <el-table-column label="所属角色" width="130">
+      <el-table-column prop="username" label="Username" width="100"/>
+      <el-table-column prop="name" label="Name" width="70"/>
+      <el-table-column prop="phone" label="Phone" width="120"/>
+      <el-table-column prop="postName" label="Position" width="100"/>
+      <el-table-column prop="deptName" label="Department" width="100"/>
+      <el-table-column label="Role" width="130">
         <template slot-scope="scope">
           <span v-for="item in scope.row.roleList" :key="item.id" style="margin-right: 10px;">{{ item.roleName }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="状态" width="80">
+      <el-table-column label="State" width="80">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.status === 1"
@@ -66,13 +66,13 @@
           </el-switch>
         </template>
       </el-table-column>
-      <el-table-column prop="createTime" label="创建时间" width="160"/>
+      <el-table-column prop="createTime" label="Created Date" width="160"/>
 
-      <el-table-column label="操作" width="180" align="center" fixed="right">
+      <el-table-column label="Operation" width="180" align="center" fixed="right">
         <template slot-scope="scope">
-          <el-button type="primary" icon="el-icon-edit" size="mini" @click="edit(scope.row.id)" title="修改"/>
-          <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeDataById(scope.row.id)" title="删除" />
-          <el-button type="warning" icon="el-icon-baseball" size="mini" @click="showAssignRole(scope.row)" title="分配角色"/>
+          <el-button type="primary" icon="el-icon-edit" size="mini" @click="edit(scope.row.id)" title="Change"/>
+          <el-button type="danger" icon="el-icon-delete" size="mini" @click="removeDataById(scope.row.id)" title="Delete" />
+          <el-button type="warning" icon="el-icon-baseball" size="mini" @click="showAssignRole(scope.row)" title="Assign Role"/>
         </template>
       </el-table-column>
     </el-table>
@@ -105,8 +105,8 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false" size="small" icon="el-icon-refresh-right">取 消</el-button>
-        <el-button type="primary" icon="el-icon-check" @click="saveOrUpdate()" size="small">确 定</el-button>
+        <el-button @click="dialogVisible = false" size="small" icon="el-icon-refresh-right">Cancel</el-button>
+        <el-button type="primary" icon="el-icon-check" @click="saveOrUpdate()" size="small">Confirm</el-button>
       </span>
     </el-dialog>
 
@@ -117,7 +117,7 @@
         </el-form-item>
 
         <el-form-item label="角色列表">
-          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</el-checkbox>
+          <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">Select all</el-checkbox>
           <div style="margin: 15px 0;"></div>
           <el-checkbox-group v-model="userRoleIds" @change="handleCheckedChange">
             <el-checkbox v-for="role in allRoles" :key="role.id" :label="role.id">{{role.roleName}}</el-checkbox>
@@ -125,8 +125,8 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button type="primary" @click="assignRole" size="small">保存</el-button>
-        <el-button @click="dialogRoleVisible = false" size="small">取消</el-button>
+        <el-button type="primary" @click="assignRole" size="small">Save</el-button>
+        <el-button @click="dialogRoleVisible = false" size="small">Cancel</el-button>
       </div>
     </el-dialog>
   </div>
@@ -174,6 +174,7 @@ export default {
 
     roleApi.findAll().then(response => {
       this.roleList = response.data;
+      console.log(this.roleList, 'roleList')
     })
   },
 
@@ -194,7 +195,7 @@ export default {
     fetchData(page = 1) {
       debugger
       this.page = page
-      console.log('翻页。。。' + this.page)
+      // console.log('翻页。。。' + this.page)
 
       if(this.createTimes && this.createTimes.length ==2) {
         this.searchObj.createTimeBegin = this.createTimes[0]
@@ -215,7 +216,7 @@ export default {
 
     // 重置查询表单
     resetData() {
-      console.log('重置查询表单')
+      console.log('Reset query form')
       this.searchObj = {}
       this.createTimes = []
       this.fetchData()
@@ -224,18 +225,18 @@ export default {
     // 根据id删除数据
     removeDataById(id) {
       // debugger
-      this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      this.$confirm('This operation will delete data', 'Tip', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
         type: 'warning'
       }).then(() => { // promise
         // 点击确定，远程调用ajax
         return api.removeById(id)
       }).then((response) => {
         this.fetchData(this.page)
-        this.$message.success(response.message || '删除成功')
+        this.$message.success(response.message || 'Delete success')
       }).catch(() => {
-        this.$message.info('取消删除')
+        this.$message.info('Delete canceled')
       })
     },
 
@@ -272,7 +273,7 @@ export default {
     // 新增
     saveData() {
       api.save(this.sysUser).then(response => {
-        this.$message.success('操作成功')
+        this.$message.success('Operation succeeded')
         this.dialogVisible = false
         this.fetchData(this.page)
       })
@@ -281,7 +282,7 @@ export default {
     // 根据id更新记录
     updateData() {
       api.updateById(this.sysUser).then(response => {
-        this.$message.success(response.message || '操作成功')
+        this.$message.success(response.message || 'Operation succeeded')
         this.dialogVisible = false
         this.fetchData(this.page)
       })
@@ -331,7 +332,7 @@ export default {
         roleIdList: this.userRoleIds
       }
       roleApi.assignRoles(assginRoleVo).then(response => {
-        this.$message.success(response.message || '分配角色成功')
+        this.$message.success(response.message || 'assign role success')
         this.dialogRoleVisible = false
         this.fetchData(this.page)
       })
@@ -341,7 +342,7 @@ export default {
       row.status = row.status === 1 ? 0 : 1
       api.updateStatus(row.id, row.status).then(response => {
         if (response.code) {
-          this.$message.success(response.message || '操作成功')
+          this.$message.success(response.message || 'Operation success')
           this.dialogVisible = false
           this.fetchData()
         }

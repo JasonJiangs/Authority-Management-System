@@ -22,7 +22,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private SysUserService sysUserService;
 
     @Override
-    public void updateSatus(Long id, Integer status) {
+    public void updateStatus(Long id, Integer status) {
         if (status != 0 && status != 1) {
             System.out.println("status is invalid: " + status);
             return;

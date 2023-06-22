@@ -37,7 +37,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     public Map<String, Object> findRoleDataByUserId(Long userId) {
         // 1. query all roles, return list
         // baseMapper is already injected by ServiceImpl
-        List<SysRole> allRolesList = this.list();
+        List<SysRole> allRolesLists = this.list();
 
         // 2. query role-user relationship by id, query all role ids by user id
         LambdaQueryWrapper<SysUserRole> wrapper = new LambdaQueryWrapper<>();
@@ -51,13 +51,15 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
         // 3. loop role list, return role list when role id is in current user role id list
         List<SysRole> assignRoleList =
-                allRolesList.stream().filter(item -> currentUserRoleIdList.contains(item.getId())).collect(Collectors.toList());
+                allRolesLists.stream().filter(item -> currentUserRoleIdList.contains(item.getId())).collect(Collectors.toList());
 
         // 4. return role map
-        Map<String, Object> roleMap = new HashMap<>();
-        roleMap.put("assignRoleList", assignRoleList);
-        roleMap.put("allRoleList", allRolesList);
-        return roleMap;
+        Map<String, Object> allRolesList = new HashMap<>();
+        allRolesList.put("assignRoleList", assignRoleList);
+        // !!issue: allRolesList should be the same in the front end,
+        // where list.vue: const allRolesList = response.data.allRolesList
+        allRolesList.put("allRolesList", allRolesLists);
+        return allRolesList;
 
 //        //查询所有的角色
 //        List<SysRole> allRolesList = this.list();
